@@ -1,3 +1,7 @@
+from bs4 import BeautifulSoup
+import requests
+
+
 class TextCollor:
     YELLOW = '\033[93m'
     GREEN = '\033[92m'
@@ -44,11 +48,11 @@ print(currencys[4][0])
 print(f'{TextCollor.YELLOW}Willkommen zum Währungsrechner!{TextCollor.ENDC}')
 
 print(f'Verfügbare {TextCollor.GREEN}Währungen{TextCollor.ENDC}: '
-          f'{currencys[0][1]} [{TextCollor.GREEN}{currencys[0][0]}{TextCollor.ENDC}],'
-          f'{currencys[1][1]} [{TextCollor.GREEN}{currencys[1][0]}{TextCollor.ENDC}],'
-          f'{currencys[2][1]} [{TextCollor.GREEN}{currencys[2][0]}{TextCollor.ENDC}],'
-          f'{currencys[3][1]} [{TextCollor.GREEN}{currencys[3][0]}{TextCollor.ENDC}],'
-          f'{currencys[4][1]} [{TextCollor.GREEN}{currencys[4][0]}{TextCollor.ENDC}]'
+      f'{currencys[0][1]} [{TextCollor.GREEN}{currencys[0][0]}{TextCollor.ENDC}],'
+      f'{currencys[1][1]} [{TextCollor.GREEN}{currencys[1][0]}{TextCollor.ENDC}],'
+      f'{currencys[2][1]} [{TextCollor.GREEN}{currencys[2][0]}{TextCollor.ENDC}],'
+      f'{currencys[3][1]} [{TextCollor.GREEN}{currencys[3][0]}{TextCollor.ENDC}],'
+      f'{currencys[4][1]} [{TextCollor.GREEN}{currencys[4][0]}{TextCollor.ENDC}]'
       )
 
 from_currency = str.upper(input('Bitte gib die Währung ein, von der du umrechnen möchtest: '))
@@ -59,7 +63,6 @@ merged_currencys_user_input = f'{from_currency}/{to_currency}'
 j = 0
 while j < len(conversion_values):
     if conversion_values[j][0] == merged_currencys_user_input:
-        result = 0
         print(f'Der Umrechnungskurs für {TextCollor.GREEN}{conversion_values[j][0]}{TextCollor.ENDC} '
               f'beträgt: {TextCollor.GREEN}{conversion_values[j][1]}{TextCollor.ENDC}')
         value = input('Gib bitte den Betrag ein, den du umrechnen möchtest: ')
